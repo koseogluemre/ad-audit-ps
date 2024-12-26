@@ -5,9 +5,9 @@ foreach ($computer in $computers) {
     try {
         $smbSigningStatus = Get-WmiObject -Namespace "root\Microsoft\Windows\SMB" -Class "MSFT_SmbClientConfiguration" -ComputerName $computerName
         if (-not $smbSigningStatus.RequireSecuritySignature -or -not $smbSigningStatus.EnableSecuritySignature) {
-            Write-Host "SMB Signing Not Required or Disabled on: $computerName"
+            Write-Host "SMB Signing False: $computerName"
         }
     } catch {
-        Write-Host "Could not connect to $computerName"
+        Write-Host "Baglanti Hatasi $computerName"
     }
 }
